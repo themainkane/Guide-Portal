@@ -1,5 +1,6 @@
 import React from "react";
+import Map from "./Map/Map.jsx";
 
 export default function App() {
-    return <h1>Hello</h1>;
+    return <Map />;
 }

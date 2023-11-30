@@ -1,3 +1,4 @@
+import React from "react";
 import { X as Close } from "react-feather"; // React icons
 import FocusLock from "react-focus-lock"; // user is locked to the last viewed component
 import { RemoveScroll } from "react-remove-scroll"; // user is unable to scroll the contennt while Modal window is active

@@ -1,0 +1,45 @@
+.wrapper {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    z-index: 50000;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.dialog {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 700px;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    color: white;
+    transform: translateY(-100%);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+.closeBtn:hover {
+    background-color: transparent;
+}
+
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10rem;
+}

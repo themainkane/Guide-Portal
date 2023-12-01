@@ -1,9 +1,12 @@
 import mapboxgl from "mapbox-gl";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import MapContext from "../context/MapContext";
+import AddSkyLayer from "../Map/AddSkyLayer";
 import "./Map.scss";
 
 export default function Map() {
     const mapContainer = useRef(null);
+    const [map, setMap] = useState(null); // // useState to manage the map instance
 
     useEffect(() => {
         mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -19,9 +22,15 @@ export default function Map() {
                 [-13.499584, 66.536591], // Northeast coordinates
             ],
         });
+        setMap(map); // // Update state with the created map instance
         // Clean up function
         return () => map.remove();
     }, []);
 
-    return <div className="map" ref={mapContainer} />;
+    return (
+        <MapContext.Provider value={{ map }}>
+            <div className="map" ref={mapContainer} />
+            {map && <AddSkyLayer />}
+        </MapContext.Provider>
+    );
 }

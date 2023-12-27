@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PinsController;
+use App\Http\Controllers\Api\PinsController;
 
 
 /*
@@ -19,6 +19,6 @@ use App\Http\Controllers\PinsController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/pins', [PinsController::class, 'index']);
-
+Route::get('/pins', [PinsController::class, 'index'])->name('pins');
+Route::post('/pins/store', [PinsController::class, 'store'])->name('pins.store');
 

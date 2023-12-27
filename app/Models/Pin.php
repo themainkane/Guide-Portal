@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,18 +12,25 @@ class Pin extends Model
 
     protected $table = "pins";
 
+    protected $fillable = [
+        'longitude', 'latitude', 'title', 
+        'approval_id', 'severity_id', 'slug', 
+        'description', 'category_id', 'creator_id', 
+        'video', 'images', 'active'
+    ];
+
     public function severity()
     {
-        $this->belongsTo(Severity::class);
+        return $this->belongsTo(Severity::class);
     }
 
     public function category()
     {
-        $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function approval()
     {
-        $this->belongsTo(Approval::class);
+        return $this->belongsTo(Approval::class);
     }
 }

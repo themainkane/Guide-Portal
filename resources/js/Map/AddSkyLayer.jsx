@@ -8,7 +8,7 @@ export default function AddSkyLayer() {
     useEffect(() => {
         // Function to add the sky layer
         const addSkyLayer = () => {
-            if (map && !map.getLayer("sky")) {
+            if (map && map.getStyle() && !map.getLayer("sky")) {
                 map.addLayer({
                     id: "sky",
                     type: "sky",
@@ -23,7 +23,7 @@ export default function AddSkyLayer() {
 
         // Check if the map is loaded, if not, add the sky layer upon load
         if (map) {
-            if (map.isStyleLoaded()) {
+            if (map && map.isStyleLoaded()) {
                 addSkyLayer();
             } else {
                 map.on("load", addSkyLayer);
@@ -32,11 +32,11 @@ export default function AddSkyLayer() {
 
         // Cleanup function
         return () => {
+            if (map && map.getStyle() && map.getLayer("sky")) {
+                map.removeLayer("sky");
+            }
             if (map) {
                 map.off("load", addSkyLayer);
-                if (map.getLayer("sky")) {
-                    map.removeLayer("sky");
-                }
             }
         };
     }, [map]);

@@ -1,7 +1,15 @@
 import Modal from "../../Modal/Modal";
-import React, { useState } from "react";
 
-export default function RegisterModal({ toggleIsRegisterOpen }) {
+import React, { useState } from "react";
+import axios from "axios";
+import useToggle from "../../Helpers/use-toggle";
+import SuccessModal from "./SuccessModal";
+
+export default function RegisterModal({
+    toggleIsRegisterOpen,
+    isRegisterOpen,
+}) {
+    const [isSuccessOpen, toggleIsSuccessOpen] = useToggle(false);
     const [userDetails, setuserDetails] = useState({
         email: "",
         name: "",
@@ -28,6 +36,8 @@ export default function RegisterModal({ toggleIsRegisterOpen }) {
 
         try {
             const response = await axios.post("/register", userDetails);
+            toggleIsRegisterOpen(!isRegisterOpen);
+            toggleIsSuccessOpen(!isSuccessOpen);
         } catch (error) {
             if (error.response && error.response.status === 422) {
                 console.log(
@@ -44,6 +54,9 @@ export default function RegisterModal({ toggleIsRegisterOpen }) {
 
     return (
         <>
+            {/* {isSuccessOpen && (
+                <SuccessModal toggleIsSuccessOpen={toggleIsSuccessOpen} />
+            )} */}
             <Modal handleDismiss={toggleIsRegisterOpen}>
                 <div className="register">
                     <h1 className="register__title">Register</h1>
@@ -66,10 +79,9 @@ export default function RegisterModal({ toggleIsRegisterOpen }) {
                             onChange={handleChange}
                         />
                         <br />
-                        <label
-                            className="register__form-label"
-                            htmlFor="email"
-                        ></label>
+                        <label className="register__form-label" htmlFor="email">
+                            email
+                        </label>
                         <br />
                         <input
                             className="register__form-input"

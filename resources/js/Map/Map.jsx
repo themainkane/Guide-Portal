@@ -2,7 +2,7 @@ import mapboxgl from "mapbox-gl";
 import React, { useRef, useEffect, useState } from "react";
 import MapContext from "../context/MapContext";
 import AddSkyLayer from "../Map/AddSkyLayer";
-import { AddLayer } from "./Layers/AddLayer";
+import { AddLayerComponent } from "./Layers/AddLayerComponent";
 import "./Map.scss";
 
 export default function Map() {
@@ -31,13 +31,14 @@ export default function Map() {
         // getLayer("/api/restaurant-layer");
         // getLayer("/api/service-provider-layer");
         //Get Layer Testing above **************
-        AddLayer("/api/hazard-layer", "hazard", "exclamation");
+        // AddLayer("/api/hazard-layer", "hazard", "exclamation");
         // Clean up function **called only when the component unmounts.
         return () => map.remove();
     }, []);
 
     // useEffect(() => {
-    //     map && AddLayer("/api/hazard-layer", "hazard", "exclamation");
+    //     // map && AddLayer("/api/hazard-layer", "hazard", "exclamation");
+    //     AddLayer("/api/hazard-layer", "hazard", "exclamation");
     // }, [map]);
 
     return (
@@ -45,6 +46,13 @@ export default function Map() {
         <MapContext.Provider value={{ map }}>
             <div className="map" ref={mapContainer} />
             {map && <AddSkyLayer />}
+            {map && (
+                <AddLayerComponent
+                    endpoint="/api/hazard-layer"
+                    source="hazard"
+                    image="exclamation"
+                />
+            )}
         </MapContext.Provider>
     );
 }

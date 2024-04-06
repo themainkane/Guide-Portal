@@ -15,19 +15,19 @@ class Severities extends Seeder
     {
         $severities = [
             [
-                'id' => 2,
+                'id' => 1,
                 'name' => 'Low',
-                'slug' => 'A hazard with either a low consequence of very low likelyhood'
+                'slug' => 'A hazard with either a low consequence or very low likelihood'
+            ],
+            [
+                'id' => 2,
+                'name' => 'Moderate',
+                'slug' => 'A hazard with a significant likelihood, and low consequence or the inverse'
             ],
             [
                 'id' => 3,
-                'name' => 'Moderate',
-                'slug' => 'A hazard with a significant likelyhood, but low consequence and the inverse'
-            ],
-            [
-                'id' => 4,
                 'name' => 'High',
-                'slug' => 'A hazard with either a high consequence or a moderate consequence and high likeihood'
+                'slug' => 'A hazard with a high consequence and moderate or high likelihood'
             ],
         ];
 

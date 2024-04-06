@@ -23,11 +23,12 @@ export default function Map() {
             ],
         });
         setMap(map); // // Update state with the created map instance
-        // Clean up function
+        // Clean up function **called only when the component unmounts.
         return () => map.remove();
     }, []);
 
     return (
+        // set the map context to the value of the map state and & ".Provide" to all children of Map.
         <MapContext.Provider value={{ map }}>
             <div className="map" ref={mapContainer} />
             {map && <AddSkyLayer />}

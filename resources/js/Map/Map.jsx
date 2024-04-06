@@ -2,6 +2,7 @@ import mapboxgl from "mapbox-gl";
 import React, { useRef, useEffect, useState } from "react";
 import MapContext from "../context/MapContext";
 import AddSkyLayer from "../Map/AddSkyLayer";
+import { getLayer } from "./Layers/GetLayer";
 import "./Map.scss";
 
 export default function Map() {
@@ -23,14 +24,24 @@ export default function Map() {
             ],
         });
         setMap(map); // // Update state with the created map instance
-        // Clean up function
+
+        //Get Layer Testing below **************
+        // getLayer("/api/hazard-layer");
+        // getLayer("/api/interp-layer");
+        // getLayer("/api/restaurant-layer");
+        // getLayer("/api/service-provider-layer");
+        //Get Layer Testing above **************
+
+        // Clean up function **called only when the component unmounts.
         return () => map.remove();
     }, []);
 
     return (
+        // set the map context to the value of the map state and & ".Provide" to all children of Map.
         <MapContext.Provider value={{ map }}>
             <div className="map" ref={mapContainer} />
             {map && <AddSkyLayer />}
+            {/* {map && <GetLayer endpoint="/api/hazard-layer" />} */}
         </MapContext.Provider>
     );
 }

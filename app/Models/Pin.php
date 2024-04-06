@@ -13,16 +13,16 @@ class Pin extends Model
 
     public function severity()
     {
-        $this->belongsTo(Severity::class);
+        return $this->belongsTo(Severity::class);
     }
 
     public function category()
     {
-        $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function approval()
     {
-        $this->belongsTo(Approval::class);
+        return $this->belongsTo(Approval::class);
     }
 }

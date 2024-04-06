@@ -21,18 +21,18 @@ class Categories extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'knowledge',
+                'name' => 'interp',
                 'slug' => 'Interesting information to deepen the exploration of an area'
 
             ],
             [
                 'id' => 3,
-                'name' => 'restraurant',
+                'name' => 'restaurant',
                 'slug' => 'Places to eat.'
             ],
             [
                 'id' => 4,
-                'name' => 'secondary service provider',
+                'name' => 'service provider',
                 'slug' => 'An external service provider or exhibition'
             ]
         ];

@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('severities', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name');
             $table->text('slug');
             $table->timestamps();
         });

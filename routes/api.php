@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/pins', [PinsController::class, 'index'])->name('pins');
 Route::get('/hazard-layer', [PinsController::class, 'getHazards'])->name('hazards');
 Route::get('/interp-layer', [PinsController::class, 'getInterp'])->name('interp');
-Route::get('/restaurant-layer', [PinsController::class, 'getRestaurant'])->name('restaurants');
+Route::get('/restaurant-layer', [PinsController::class, 'getRestaurants'])->name('restaurants');
 Route::get('/service-provider-layer', [PinsController::class, 'getServiceProviders'])->name('serviceProviders');
 
 

@@ -36,14 +36,14 @@ class PinsController extends Controller
 
     public function getRestaurants()
     {
-        $restaurant = Pin::where('categpry_id, 3')->get();
+        $restaurant = Pin::where('category_id', 3)->get();
 
         return $restaurant;
     }
 
     public function getServiceProviders()
     {
-        $serviceProviders = Pin::where('categpry_id, 4')->get();
+        $serviceProviders = Pin::where('category_id', 4)->get();
 
         return $serviceProviders;
     }

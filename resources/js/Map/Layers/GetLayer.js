@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const GetLayer = async ({ endpoint }) => {
+export const getLayer = async (endpoint) => {
     try {
         const response = await axios.get(endpoint);
         const data = response.data;
@@ -14,7 +14,7 @@ export const GetLayer = async ({ endpoint }) => {
             properties: {
                 id: pin.id,
                 title: pin.title,
-                severity: pin.severity.name,
+                severity: pin.severity?.name || null, //added to ensure get layer works for different pin types.
                 severity_id: pin.severity_id,
                 slug: pin.slug,
                 description: pin.description,

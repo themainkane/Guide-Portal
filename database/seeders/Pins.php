@@ -89,7 +89,7 @@ class Pins extends Seeder
                 'longitude' => -21.970231,
                 'latitude' => 64.149623,
                 'title' => 'Avalance Hazard',
-                'severity_id' => 4,
+                'severity_id' => 3,
                 "category_id" => 1,
                 // number 1, 2, or 3
                 'slug' => 'Serious Avalanche Danger',
@@ -101,7 +101,7 @@ class Pins extends Seeder
                 'longitude' => -21.925373,
                 'latitude' => 64.137562,
                 'title' => 'Large Moulin',
-                'severity_id' => 4,
+                'severity_id' => 3,
                 "category_id" => 1,
                 // number 1, 2, or 3
                 'slug' => 'Large Moulin',
@@ -127,7 +127,7 @@ class Pins extends Seeder
                 'latitude' => 64.128401,
                 // 52.16 with aberration 0.06
                 'title' => 'Cornice',
-                'severity_id' => 4,
+                'severity_id' => 3,
                 "category_id" => 1,
                 // number 1, 2, or 3
                 'slug' => 'Out of bounds: Large Cornice',

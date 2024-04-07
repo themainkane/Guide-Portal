@@ -2,7 +2,7 @@ import { getLayer } from "./GetLayer";
 import MapContext from "../../context/MapContext";
 import { useContext, useEffect } from "react";
 
-export const AddLayerComponent = ({ endpoint, source, image }) => {
+export const AddLayerComponent = ({ endpoint, source, image, imageSize }) => {
     const { map } = useContext(MapContext);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ export const AddLayerComponent = ({ endpoint, source, image }) => {
                     source: source,
                     layout: {
                         "icon-image": image,
-                        "icon-size": 0.3,
+                        "icon-size": imageSize,
                     },
                 });
                 console.log(geojson);
@@ -43,5 +43,5 @@ export const AddLayerComponent = ({ endpoint, source, image }) => {
         addLayer(); //origionally whole component, but moved into use effect to allow for use of context and prevent using async on top level of component
     }, [map, endpoint, source, image]);
 
-    return null; // Since this component only performs side effects, it doesn't need to render anything
+    return null; // doesn't need to render anything
 };

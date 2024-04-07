@@ -5,6 +5,7 @@ import AddSkyLayer from "../Map/AddSkyLayer";
 import { AddLayerComponent } from "./Layers/AddLayerComponent";
 import "./Map.scss";
 import AddPin from "./Layers/Pin/AddPin";
+import ShowPinDetails from "./Layers/Pin/ShowPinDetails";
 
 export default function Map() {
     const mapContainer = useRef(null);
@@ -54,6 +55,7 @@ export default function Map() {
                 />
             )}
             {map && <AddPin />}
+            {map && <ShowPinDetails />}
         </MapContext.Provider>
     );
 }

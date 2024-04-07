@@ -4,6 +4,7 @@ import MapContext from "../context/MapContext";
 import AddSkyLayer from "../Map/AddSkyLayer";
 import { AddLayerComponent } from "./Layers/AddLayerComponent";
 import "./Map.scss";
+import AddPin from "./Layers/Pin/AddPin";
 
 export default function Map() {
     const mapContainer = useRef(null);
@@ -52,6 +53,7 @@ export default function Map() {
                     imageSize={3.5}
                 />
             )}
+            {map && <AddPin />}
         </MapContext.Provider>
     );
 }

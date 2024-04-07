@@ -2,7 +2,7 @@ import Modal from "../../Modal/Modal";
 
 import React, { useState } from "react";
 import axios from "axios";
-import useToggle from "../../Helpers/use-toggle";
+import useToggle from "../../Helpers/useToggle";
 import SuccessModal from "./SuccessModal";
 
 export default function RegisterModal({

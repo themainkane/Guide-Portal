@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import useToggle from "../../Helpers/use-toggle";
+import useToggle from "../../Helpers/useToggle";
 import Modal from "../../Modal/Modal";
 import RegisterModal from "../register/RegisterModal";
 import axios from "axios";

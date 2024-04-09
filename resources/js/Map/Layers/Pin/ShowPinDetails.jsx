@@ -4,9 +4,12 @@ import { createRoot } from "react-dom/client";
 import MapContext from "../../../context/MapContext";
 import cursorStyle from "../../cursorStyle";
 import PinDetailsContent from "./PinDetailsContent";
+import Modal from "../../../Components/Modal/Modal";
+import useToggle from "../../../Components/Helpers/useToggle";
 
 export default function ShowPinDetails() {
     const { map } = useContext(MapContext);
+    const [isDetailsModalOpen, toggleIsDetailsModalOpen] = useToggle(false);
 
     const [details, setDetails] = useState({
         longitude: null,
@@ -35,7 +38,7 @@ export default function ShowPinDetails() {
                 slug: pinProperties.slug,
                 severity: pinProperties.severity,
                 severity_id: pinProperties.severity_id,
-                type_id: pinProperties.type_id,
+                category_id: pinProperties.category_id,
                 description: pinProperties.description,
                 id: pinProperties.id,
                 images: pinProperties.images,
@@ -44,7 +47,13 @@ export default function ShowPinDetails() {
             const placeHolder = document.createElement("div");
             placeHolder.className = "pop-up";
             const popUpRoot = createRoot(placeHolder);
-            popUpRoot.render(<PinDetailsContent details={newDetails} />);
+            popUpRoot.render(
+                <PinDetailsContent
+                    details={newDetails}
+                    toggleIsDetailsModalOpen={toggleIsDetailsModalOpen}
+                />
+            );
+
             const myPopUp = new mapboxgl.Popup({
                 closeButton: false,
                 closeOnClick: true,
@@ -79,5 +88,26 @@ export default function ShowPinDetails() {
 
     cursorStyle(map, "hazard");
     cursorStyle(map, "interp");
-    return null;
+
+    return (
+        <>
+            {isDetailsModalOpen && (
+                <Modal handleDismiss={toggleIsDetailsModalOpen}>
+                    <div className="details_container">
+                        <h3 className="mainBox-h3">Event: {details.title}</h3>
+
+                        {details.category_id == 1 && (
+                            <p className="pop-up__severity">
+                                <span className="severity-tite">Severity:</span>{" "}
+                                <span>{details.severity}</span>
+                            </p>
+                        )}
+                        <h4>Basic Description:</h4>
+                        <p>{details.slug}</p>
+                        <p>{details.description}</p>
+                    </div>
+                </Modal>
+            )}
+        </>
+    );
 }
